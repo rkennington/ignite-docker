@@ -1,7 +1,7 @@
 # Apache Ignite on CDH
-This repo contains a Docker configuration for Apache Ignite using Cloudera CDH with Debian as the platform. 
+This repo contains a Docker configuration for Apache Ignite using [Cloudera Hadoop 5](https://github.com/caioquirino/docker-cloudera-quickstart) with Debian as the platform. 
 
-It installs the data fabric and ignite accelerator (i.e. IGFS). 
+It installs an [Apache Ignite](https://ignite.apache.org/) In-Memory Data Fabric and Hadoop Accelerator (i.e. IGFS). 
 
 Currently, there is not an image to pull from Docker as this is still a work in progress. So, check it out from git and run the following Docker commands to get it running. 
 
@@ -17,21 +17,12 @@ CD to working directory with Dockerfile and run `docker build -t <arbitrary name
 `./run.sh` - this only needs to be run once. 
 
 At this point your are running two independent processes.
-ToDo: configure it to integrate and run IGFS based on https://apacheignite.readme.io/docs/installing-on-cloudera-cdh
+ToDo: configure it to integrate and run IGFS based on [installing it on cloudera CDH](https://apacheignite.readme.io/docs/installing-on-cloudera-cdh).
 
 for additional shells:
 `docker ps` 
 
-`docker exec -it <container/image ID> bash -l`
-
-or
-
-`docker exec -it <image ID>`
+`docker exec -it <container/image ID> bash -l` or `docker exec -it <Image ID> /bin/bash`
 
 ## License
 Yardstick Docker is available under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) Open Source license.
-
-
-
-
-
