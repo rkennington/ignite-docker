@@ -56,7 +56,11 @@ if [ ! -z "$EXEC_CMD" ]; then
 fi
 
 if [ -z "$IGNITE_CONFIG" ]; then
-  ignite/*/bin/ignite.sh
+  echo "running with out ignite-config.xml"
+# ignite/*/bin/ignite.sh
+  $IGNITE_HOME/bin/ignite.sh
 else
-  ignite/*/bin/ignite.sh ignite-config.xml
+  echo "running with ignite-config.xml"
+# ignite/*/bin/ignite.sh ignite-config.xml
+  $IGNITE_HOME/bin/ignite.sh ignite-config.xml
 fi

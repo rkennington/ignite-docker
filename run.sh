@@ -35,4 +35,7 @@ if [ -z $SKIP_DOWNLOAD ]; then
   fi
 fi
 
+ln -s ${IGNITE_HOME}/libs/ignite-core-1.4.0.jar /usr/lib/hadoop/lib/ignite-core-1.4.0.jar
+ln -s ${IGNITE_HOME}/libs/ignite-hadoop/hadoop/ignite-hadoop-1.4.0.jar /usr/lib/hadoop/lib/ignite-hadoop-1.4.0.jar
+
 ./execute.sh

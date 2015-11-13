@@ -16,7 +16,8 @@
 #
 
 # Start from a Debian image.
-FROM debian:8
+#FROM debian:8
+FROM caioquirino/docker-cloudera-quickstart:latest
 
 # Install tools.
 RUN apt-get update && apt-get install -y --fix-missing \
@@ -25,22 +26,31 @@ RUN apt-get update && apt-get install -y --fix-missing \
   maven \
   git
 
-# Intasll Oracle JDK.
-RUN mkdir /opt/jdk
+########## START disabling jdk1.7 install ##########
+# Install Oracle JDK.
+#RUN mkdir /opt/jdk
 
-RUN wget --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-  http://download.oracle.com/otn-pub/java/jdk/7u76-b13/jdk-7u76-linux-x64.tar.gz
+##### ToDo: we may not need to add this JDK #####
+#RUN wget --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+#  http://download.oracle.com/otn-pub/java/jdk/7u76-b13/jdk-7u76-linux-x64.tar.gz
 
-RUN tar -zxf jdk-7u76-linux-x64.tar.gz -C /opt/jdk
+#RUN tar -zxf jdk-7u76-linux-x64.tar.gz -C /opt/jdk
 
-RUN rm jdk-7u76-linux-x64.tar.gz
+#RUN rm jdk-7u76-linux-x64.tar.gz
 
-RUN update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.7.0_76/bin/java 100
+#RUN update-alternatives --install /usr/bin/java java /opt/jdk/jdk1.7.0_76/bin/java 100
 
-RUN update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.7.0_76/bin/javac 100
+#RUN update-alternatives --install /usr/bin/javac javac /opt/jdk/jdk1.7.0_76/bin/javac 100
 
-# Sets java variables.
-ENV JAVA_HOME /opt/jdk/jdk1.7.0_76/
+# Sets evironment variables.
+#ENV JAVA_HOME /opt/jdk/jdk1.7.0_76/
+########## END disabling jdk1.7 install ##########
+
+ENV JAVA_HOME=/usr/lib/jvm/jdk1.8.0_40
+
+# Additional setup of Ignite with CDH. See https://apacheignite.readme.io/docs/installing-on-cloudera-cdh
+#ENV IGNITE_HOME /home/ignite_home/ignite/gridgain-community-fabric-1.4.0
+ENV IGNITE_HOME /home/ignite_home/ignite/apache-ignite-hadoop-1.4.0-bin
 
 # Create working directory
 RUN mkdir /home/ignite_home
@@ -52,4 +62,4 @@ ADD *.sh ./
 
 RUN chmod +x *.sh
 
-CMD ./run.sh
+#CMD ./run.sh
