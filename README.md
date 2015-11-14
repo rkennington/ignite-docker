@@ -9,11 +9,14 @@ Currently, there is not an image to pull from Docker as this is still a work in 
 ## Build and run it 
 CD to working directory with Dockerfile and run `docker build -t <arbitrary name>:<version> .` 
 
-`docker build -t horse:v1 .`
+`docker build -t <arbitrary name>:<version> .`
 
 `docker images` - to see what you created
 
 `docker run -it <arbitrary name>:<version>` or `docker run -it <Image ID>` 
+
+or, to run the container in background: `docker run -itd <arbitrary name>:<version>` 
+
 
 `cd /home/ignite_home`
 
@@ -29,6 +32,8 @@ for additional shells:
 `docker exec -it <Container ID> bash -l` or `docker exec -it <Image ID> /bin/bash`
 
 `docker stop <Container ID>` - to stop it.
+
+`docker rmi -f horse:v1` - to remove it permenantly
 
 
 ## License

@@ -62,7 +62,5 @@ ADD *.sh ./
 
 RUN chmod +x *.sh
 
-WORKDIR /
-
-#CMD /home/ignite_home/run.sh
+#CMD ./run.sh
 
