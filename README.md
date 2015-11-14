@@ -1,5 +1,5 @@
 # Apache Ignite on CDH
-This repo contains a Docker configuration for Apache Ignite using [Cloudera Hadoop 5](https://github.com/caioquirino/docker-cloudera-quickstart) with Debian as the platform. 
+This repo contains a Docker configuration for Apache Ignite using [Cloudera Hadoop 5.3](http://www.cloudera.com/content/www/en-us/documentation/enterprise/5-3-x/topics/introduction.html) [quickstart](https://github.com/caioquirino/docker-cloudera-quickstart) with Debian as the platform. 
 
 It installs an [Apache Ignite](https://ignite.apache.org/) In-Memory Data Fabric and Hadoop Accelerator (i.e. IGFS). 
 
