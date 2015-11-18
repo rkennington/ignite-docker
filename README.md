@@ -1,18 +1,24 @@
 # Apache Ignite on CDH
-This repo contains a Docker configuration for Apache Ignite using [Cloudera Hadoop 5.3](http://www.cloudera.com/content/www/en-us/documentation/enterprise/5-3-x/topics/introduction.html) [quickstart](https://github.com/caioquirino/docker-cloudera-quickstart) with Debian as the platform. 
+This repo contains a Docker configuration for Apache Ignite using [Cloudera Hadoop 5.3](http://www.cloudera.com/content/www/en-us/documentation/enterprise/5-3-x/topics/introduction.html) with Ubuntu as the platform and is based on [quickstart](https://github.com/caioquirino/docker-cloudera-quickstart) to integrate IGFS.
 
-It installs an [Apache Ignite](https://ignite.apache.org/) In-Memory Data Fabric and Hadoop Accelerator (i.e. IGFS). 
+It installs an [Apache Ignite](https://ignite.apache.org/) In-Memory Data Fabric and Hadoop Accelerator (i.e. IGFS) and attemps to integrate IGFS with Hadoop 2.6.0.
 
 Currently, there is not an image to pull from Docker as this is still a work in progress. So, check it out from git and run the following Docker commands to get it running. 
 
 
 # Current Goals of this project: 
-1) Configure Hadoop to integrate with IGFS based on [installing it on cloudera CDH](https://apacheignite.readme.io/docs/installing-on-cloudera-cdh).
 
-2) Develop an Ignite client to use it as a resource. 
+*Goal*: to observe Ignite/IGFS performance with and without IGFS using a stream of Pig commands against delimited files. This platform will serve as the base configuration to develop IGFS clients. Actuall performance will be done on another system. 
 
-3) Observe performance with and without IGFS. 
+1) Configure Hadoop to integrate with IGFS based on [installing it on cloudera CDH](https://apacheignite.readme.io/docs/installing-on-cloudera-cdh). Document and run CLI commands to verify it is working. Load some comma delimited files to work with.
 
+2) Startup one or more Ignite clients to use as a resource on the platform.
+
+3) Develop an Ignite client that distributes and executes a stream of Pig commands. Continue to use the Docker platform as a development environment to experiment with. 
+
+4) Migrate to a distributed cluster to observe performance. 
+
+5) Explore other aspects of Ignite use cases. 
 
 
 ## Build and run it 
@@ -39,7 +45,8 @@ for commands:
 
 `docker stop <Container ID>` - to stop it.
 
-`docker rmi -f horse:v1` - to remove it permenantly
+`docker rmi -f <arbitrary name>:v1` - to remove the image permanently.
+
 
 #Interim steps to setup IGFS - WARNING: still a work in progress
 
@@ -56,9 +63,6 @@ This is a work in progress as I continue to troubleshoot why hadoop is not start
 `$IGNITE_HOME/bin/setup-hadoop.sh` - answered 'y' to all questions to setup IGFS to use HDFS locally. 
 
 `/usr/bin/cdh_startup_script.sh` - observe console and logs to see hadoop failing to start. 
-
-
-
 
 
 
