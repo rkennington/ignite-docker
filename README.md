@@ -10,7 +10,9 @@ Currently, there is not an image to pull from Docker as this is still a work in 
 
 *Goal*: to observe Ignite/IGFS performance with and without IGFS using a stream of Pig commands against delimited files. This platform will serve as the base configuration to develop IGFS clients. Actuall performance will be done on another system. 
 
-1) Configure Hadoop to integrate with IGFS based on [installing it on cloudera CDH](https://apacheignite.readme.io/docs/installing-on-cloudera-cdh). Document and run CLI commands to verify it is working. Load some comma delimited files to work with.
+1) Configure Hadoop to integrate with IGFS based on [installing it on cloudera CDH](https://apacheignite.readme.io/docs/installing-on-cloudera-cdh). 
+
+2) [Setup IGFS as a Hadoop file system](https://apacheignite.readme.io/docs/file-system) to support file operations against Hadoop. Determine CLI commands to verify it is working with [basic file operations](https://apacheignite.readme.io/v1.0/docs/igfs) (i.e. mkdir, cp, ls, del, etc.) as well as load some comma delimited files to work with.
 
 2) Startup one or more Ignite clients to use as a resource on the platform.
 
