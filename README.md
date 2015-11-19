@@ -32,15 +32,6 @@ CD to working directory with Dockerfile and run `docker build -t <arbitrary name
 
 `docker run -it <arbitrary name>:<version>` or `docker run -it <Image ID>` 
 
-or, to run the container in background: `docker run -itd <arbitrary name>:<version>` 
-
-
-`cd /home/ignite_home`
-
-`./run.sh` - this only needs to be run once. Type Ctrl-Q to exit but keep it running. Otherwise, Ctrl-C to abort it. 
-
-for commands:
-
 `docker ps` 
 
 `docker exec -it <Container ID> bash -l` or `docker exec -it <Image ID> /bin/bash`

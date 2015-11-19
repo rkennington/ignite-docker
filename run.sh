@@ -43,9 +43,12 @@ cp $IGNITE_HOME/config/hadoop/core-site.ignite.xml $IGNITE_HOME/ignite-conf/core
 cp $IGNITE_HOME/config/hadoop/hive-site.ignite.xml $IGNITE_HOME/ignite-conf/hive-site.xml
 cp $IGNITE_HOME/config/hadoop/mapred-site.ignite.xml $IGNITE_HOME/ignite-conf/mapred-site.xml
 
-echo "Try running ./hadoop-ignite file system commands. Example: './hadoop-ignited fs -mkdir /temp' or './hadoop-ignited fs -ls /'
+echo "Try running ./hadoop-ignite file system commands. "
+echo "."
+echo "Example: './hadoop-ignited fs -mkdir /temp' or './hadoop-ignited fs -ls /'"
 echo " . "
-echo "Startup an ignite node by running ./execute.sh"
+echo "Startup an ignite node by running './execute.sh &'"
+echo " . "
 
 # Temporarily disabled to experiment with IGFS and/or Ignite setup.
 #./execute.sh

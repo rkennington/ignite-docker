@@ -59,9 +59,9 @@ WORKDIR /home/ignite_home
 
 # Copy sh files and set permission
 ADD *.sh ./
-ADD hadoop-ignited
-
 RUN chmod +x *.sh
+
+ADD hadoop-ignited ./
 RUN chmod +x hadoop-ignited
 
 #CMD ./run.sh
