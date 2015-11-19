@@ -15,7 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 if [ -z $SKIP_BUILD_LIBS ]; then
   ./build_users_libs.sh
 
@@ -35,9 +34,20 @@ if [ -z $SKIP_DOWNLOAD ]; then
   fi
 fi
 
-ln -s ${IGNITE_HOME}/libs/ignite-core-1.4.0.jar /usr/lib/hadoop/lib/ignite-core-1.4.0.jar
-ln -s ${IGNITE_HOME}/libs/ignite-hadoop/hadoop/ignite-hadoop-1.4.0.jar /usr/lib/hadoop/lib/ignite-hadoop-1.4.0.jar
+# Not needed per https://issues.apache.org/jira/browse/IGNITE-483
+#ln -s ${IGNITE_HOME}/libs/ignite-core-1.4.0.jar /usr/lib/hadoop/lib/ignite-core-1.4.0.jar
+#ln -s ${IGNITE_HOME}/libs/ignite-hadoop/hadoop/ignite-hadoop-1.4.0.jar /usr/lib/hadoop/lib/ignite-hadoop-1.4.0.jar
 
-# Temporarily disabled to experiment with IGFS and/or Ignite setup. 
+mkdir -p $IGNITE_HOME/ignite-conf
+cp $IGNITE_HOME/config/hadoop/core-site.ignite.xml $IGNITE_HOME/ignite-conf/core-site.xml
+cp $IGNITE_HOME/config/hadoop/hive-site.ignite.xml $IGNITE_HOME/ignite-conf/hive-site.xml
+cp $IGNITE_HOME/config/hadoop/mapred-site.ignite.xml $IGNITE_HOME/ignite-conf/mapred-site.xml
+
+echo "Try running ./hadoop-ignite file system commands. Example: './hadoop-ignited fs -mkdir /temp' or './hadoop-ignited fs -ls /'
+echo " . "
+echo "Startup an ignite node by running ./execute.sh"
+
+# Temporarily disabled to experiment with IGFS and/or Ignite setup.
 #./execute.sh
+
 

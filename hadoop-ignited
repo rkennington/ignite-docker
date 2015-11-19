@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# See https://issues.apache.org/jira/browse/IGNITE-483
+
+# Ignite home is needed to allow Ignite libraries to find the logger config (it is resolved relative to the Ignite home):
+#export IGNITE_HOME=/home/ignite/ignite-hadoop-1.0.0-RC3-SNAPSHOT
+export IGNITE_HOME=/home/ignite_home/ignite/apache-ignite-hadoop-1.4.0-bin
+
+# Add necessary Ignite libraries to the Hadoop client classpath:
+#export HADOOP_CLASSPATH=${IGNITE_HOME}/libs/ignite-core-1.0.0-RC3-SNAPSHOT.jar:${IGNITE_HOME}/libs/ignite-hadoop/ignite-hadoop-1.0.0-RC3-SNAPSHOT.jar:${IGNITE_HOME}/libs/ignite-shmem-1.0.0.jar
+export HADOOP_CLASSPATH=${IGNITE_HOME}/libs/ignite-core-1.4.0.jar:${IGNITE_HOME}/libs/ignite-hadoop/ignite-hadoop-1.4.0.jar:${IGNITE_HOME}/libs/ignite-shmem-1.0.0.jar
+
+#hadoop --config ${IGNITE_HOME}/hadoop/home "${@}"
+#hadoop --config /etc/hadoop/conf "${@}"
+
+# Note: you must copy have the ignite client running. Otherwise, you will see a 'Failed to communicate with IGFS.' error.
+hadoop --config $IGNITE_HOME/ignite-conf "${@}"
+

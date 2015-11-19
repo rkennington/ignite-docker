@@ -50,23 +50,27 @@ for commands:
 `docker rmi -f <arbitrary name>:v1` - to remove the image permanently.
 
 
-#Interim steps to setup IGFS - WARNING: still a work in progress
+#Steps to setup IGFS 
 
-This is a work in progress as I continue to troubleshoot why hadoop is not starting up after I run an IGFS setup script.
-
+Resolved by following recommendations in [this thread](http://apache-ignite-users.70518.x6.nabble.com/IllegalArgumentException-Invalid-URI-for-NameNode-address-check-fs-defaultFS-igfs-igfs-localhost-is--td1978.html#a2009).
+`
 `$IGNITE_HOME=/home/ignite_home/ignite/apache-ignite-hadoop-1.4.0-bin` - According to the instructions in ​$IGNITE_HOME/config/hadoop/core-site.ignite.xml, we should be able to run $IGNITE_HOME/bin/setup-hadoop.sh to setup IGFS to use HDFS locally.
 
-`./cdh_stop_script.sh` - to shutdown hadoop and all services as we wills start it all up again. 
+`./cdh_stop_hdfs.sh` - to shutdown hdfs as igfs will superceded it in PRIMARY mode. 
  
-`ps -ef` to get a list of processes that were not stopped 
-
-`kill -9 <kafka pid>` - to kill the Kafka process and it's startup script
+`./run.sh` - to download and install Ignite.
  
-`$IGNITE_HOME/bin/setup-hadoop.sh` - answered 'y' to all questions to setup IGFS to use HDFS locally. 
+`./execute.sh &` - to start up Ignite as an independent thread. Ignite must be running to use haddop-ignite CLI file operations. 
 
-`/usr/bin/cdh_startup_script.sh` - observe console and logs to see hadoop failing to start. 
+Not try some IGFS file commands with `hadoop-ignite`:
 
+`./hadoop-ignited fs -help`
+
+`./hadoop-ignited fs -mkdir /temp`
+
+`./hadoop-ignited fs -ls /`
 
 
 ## License
 Yardstick Docker is available under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) Open Source license.
+.
