@@ -68,7 +68,9 @@ Not try some IGFS file commands with `hadoop-ignite`:
 
 `./hadoop-ignited fs -mkdir /temp`
 
-`./hadoop-ignited fs -ls /`
+`fs -put cdh_stop_script.sh /temp/cdh_stop_script.sh` - to copy a local file to IGFS
+
+`./hadoop-ignited fs -ls /temp`
 
 
 ## License
